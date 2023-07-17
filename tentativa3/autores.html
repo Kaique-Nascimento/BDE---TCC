@@ -6,7 +6,7 @@
     <title>Bem-Vindo</title>
     <link rel="stylesheet" href="css.css" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      href="bootstrap/bootstrap.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
@@ -14,12 +14,11 @@
   </head>
   <body>
     <header>
-      <div id="top">&nbsp;</div>
+      <div id="top">&nbsp</div>
       <nav class="navbar navbar-expand-lg azul">
         <div class="container-fluid">
           <a href="index.html" class="nav-link active">
-            <img src="img/logo.png" width="100rem"
-          /></a>
+            <img src="img/logo.png" width="100rem"></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -87,34 +86,44 @@
     <h1>Escolha um autor de sua preferência</h1>
     <div class="row autores">
         <div class="col-sm">
-            <div class="card">
-                <img class="card-img-top" src="img/autores/machado.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Ver sobre o autor</a>
-                </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="img/autores/machado.jpg" class="escurinha">
+                <h2>Machado de Assis</h2>
               </div>
+              <div class="flip-card-back">
+                  <h1>Machado de Assis</h1>
+                  <p>Machado de assis foi o meu pai</p>
+                <img src="img/autores/machado.jpg" class="escurinha">
+                
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-sm">
+          <a href="#" class="cartao">
             <div class="card">
                 <img class="card-img-top" src="img/autores/monteiro.jpg" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">Monteiro Lobato</h5>
+                  <p class="card-text"> Sobrancelha sombrancelha</p>
                   <a href="#" class="btn btn-primary">Ver sobre o autor</a>
                 </div>
               </div>
+              </a>
         </div>
         <div class="col-sm">
+          <a href="#" class="cartao">
             <div class="card">
                 <img class="card-img-top" src="img/autores/pessoa.jpg" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">Fernando Pessoa</h5>
+                  <p class="card-text">E como ja dizia meu colega fernando pessoa, navegsa é preciso então não fiquei aí à toa</p>
                   <a href="#" class="btn btn-primary">Ver sobre o autor</a>
                 </div>
               </div>
+              </a>
         </div>
       </div>
 </div>
@@ -140,5 +149,18 @@
 });
 
 </script>
+<script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous"
+    ></script>
+    <script src="bootstrap/bootstrap.js"
+    integrity="sha384-WOr7/6xVi4fcRjr2XHKBGQ6y+YtjXBL++4PjjE7PdOZs3UNx3UWnxtYBxtbCY8q3"
+    crossorigin="anonymous"></script>
   </body>
 </html>

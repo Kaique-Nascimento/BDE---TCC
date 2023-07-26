@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bem-Vindo</title>
+    <link rel="stylesheet" href="css/css.css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  </head>
+  <body>
+    <header>
+      <div id="top">&nbsp;</div>
+      <nav class="navbar navbar-expand-lg azul">
+        <div class="container-fluid">
+          <a href="index.html" class="nav-link active">
+            <img src="img/logo.png" width="100rem" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul
+              class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+              style="--bs-scroll-height: 100px"
+            >
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="livros.html">Livros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="autores.html">Autores</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                >
+                  Link
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Procurar"
+                aria-label="Search"
+              />
+              <button class="btn editado" type="submit">
+                Procurar
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="banner esquerda"></div>
+    <div class="banner direita"></div>
+    <main>
+      
+      <div class="row">
+        <div class="col-md-8">
+          <div class="container">
+            <h1 class="text-center">Veja alguns destaques de livros!</h1>
+            <div class="row">
+              <div class="col-sm">
+                <a href="livros.html" id="signin">
+                <div class="caixa-livro text-center">
+                  <i class="fas fa-plus icone"></i>
+                </div>
+              </a>
+              </div>
+              <!--Modal cadastro livro -->
+              <div class="modal" id="myModal">
+                <form class="modal-content animate">
+                  <div class="imgcontainer">
+                    <span class="close" title="sair">&times;</span>
+                    <img src="img/users.png" alt="users" class="avatar">
+                  </div>
+                  <div class="container">
+                    <div class="card">
+                      <a class="login">Cadastrar livro</a>
+                      <div class="inputBox">
+                        <input type="text" required="required">
+                        <span class="user">Nome do livro</span>
+                      </div>
+                      <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Nome do autor</span>
+                      </div>
+                      <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Editora</span>
+                      </div>
+                      <div class="inputBox">
+                        <input type="date" required="required">
+                        <span>Data de lançamento</span>
+                      </div>
+                      <button class="enter">Enter</button>
+                      <button type="button" onclick="document.getElementById('myModal').style.display='none'" class="cancelbtn">Cancelar</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          
+              <script>
+                document.getElementById("signin").addEventListener("click", function(event) {
+                  document.getElementById('myModal').style.display = "block";
+                  event.preventDefault();
+                });
+          
+                document.querySelector(".close").addEventListener("click", function() {
+                  document.getElementById('myModal').style.display = "none";
+                });
+              </script>
+              <!-- -->
+              <div class="col-sm">
+                <a href="livros.html">
+                  <img src="img/livros/livro1.jpg" class="livros" alt="Livro1" />
+                  <p class="revelado">Esse livro é de corno</p>
+                </a>
+              </div>
+              <div class="col-sm">
+                <a href="livros.html">
+                  <img src="img/livros/livro1.jpg" class="livros" alt="Livro1" />
+                  <p class="revelado">Esse livro é de corno</p>
+                </a>
+              </div>
+          </div>
+          
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <aside id="categorias">
+            <h2>Categorias</h2>
+            <ul>
+              <li>Categoria 1</li>
+              <li>Categoria 2</li>
+              <li>Categoria 3</li>
+              <li>Categoria 4</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+ 
+  </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

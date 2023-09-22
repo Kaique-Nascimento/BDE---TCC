@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bem-Vindo</title>
+        <link rel="stylesheet" id="css-tema" href="css/css.css"/>
+        <link href="bootstrap/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+      </head>
+<div>
+  <header>
+    <div id="top">&nbsp;</div>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="index.html" class="nav-link active">
+          <img id="img-tema" src="img/logo/claro.png" width="80em"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="livros.html">Livros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="autores.html">Autores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="telaAutores.html">autores</a>
+            </li>
+            <li class="nav-item">
+              
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Link
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#login.html">Lo</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+         
+          </ul>
+          <input type="checkbox" id="tema">      
+
+          <i id="icone-tema" class="fa-solid fa-3x fa-sun" style="color: #fff;"></i>
+         
+        </input>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Procurar"
+              aria-label="Search"
+            />
+            <button class="editado" type="submit">
+              Procurar
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="banner esquerda"></div>
+  <div class="banner direita"></div>
+  
+<script>
+/*
+a = sessionStorage.getItem('logado');
+if(a == 'sim'){
+  document.write("logado");
+}
+else{
+  document.write("deslogado");
+
+}
+*/
+var linkTema = document.getElementById("css-tema");
+      var icone = document.getElementById("icone-tema");
+      var img = document.getElementById("img-tema");
+      var temaClaro = "css/css.css";
+      var temaEscuro = "css/escuro.css";
+
+      function mudarParaClaro() {
+          sessionStorage.setItem("tema", "claro");
+          linkTema.href = "css/css.css";
+          icone.className = "fa-solid fa-3x fa-sun";
+          img.src = "img/logo/claro.png";
+      }
+
+      function mudarParaEscuro() {
+          sessionStorage.setItem("tema", "escuro");
+          linkTema.href = "css/escuro.css";
+          icone.className = "fa-solid fa-3x fa-moon";
+          img.src = "img/logo/escuro.png";
+
+      }
+
+      icone.addEventListener("click", function () {
+          if (tema.checked) {
+              tema.checked = false;
+              mudarParaEscuro();
+          } else {
+              tema.checked = true;
+              mudarParaClaro();
+          }
+      });
+
+      // Verifique o tema armazenado na sessionStorage e configure-o inicialmente
+      if (sessionStorage.getItem("tema") === "escuro") {
+          mudarParaEscuro();
+      } else {
+          mudarParaClaro();
+      }
+</script>
+      <div class="container font-monospace">
+        <div class="row">
+            <div class="col-md-3 ">
+                <h3 class="titulo"style="white-space: nowrap;"> Fernando Pessoa <br><br>
+                <img src="img/autores/pessoa.jpg" style="width: 200%;"  alt="Imagem de Livro"> 
+            </h3>    
+                
+         
+            </div>  
+            <div class="col-md-9 biografia" style="margin-top: 7%; padding-left: 10%;" >
+                <i class="fa-solid fa-calendar-days" style="color: #0c65a0;">&nbsp 1888 - 1935 &nbsp</i> 
+                <br>
+                <i class="fa-solid fa-location-dot" style="color: #0c65a0; ">&nbsp  Portugal</i> 
+                <br>
+           
+              <h3 class="titulo" style="font-size: 25px;">Biografia &nbsp   
+              <h5 class="bio" style="font-size: 13px;">
+                Biografia de Fernando Pessoa
+                Fernando Pessoa (1888-1935) foi um dos mais importantes poetas da língua portuguesa e figura central do Modernismo português. Poeta lírico e nacionalista cultivou uma poesia voltada aos temas tradicionais de Portugal e ao seu lirismo saudosista, que expressa reflexões sobre seu “eu profundo”, suas inquietações, sua solidão e seu tédio.
+                
+                Fernando Pessoa foi vários poetas ao mesmo tempo, criou heterônimos - poetas com personalidades próprias que escreveram sua poesia e, com eles procurou detectar, sob vários ângulos, os dramas do homem de seu tempo..
+                
+                Infância e Juventude
+                Fernando Antônio Nogueira Pessoa nasceu em Lisboa, Portugal, no dia 13 de junho de 1888. Era filho de Joaquim de Seabra Pessoa, natural de Lisboa, que era crítico musical, e de Maria Magdalena Pinheiro Nogueira Pessoa, natural dos Açores. Ficou órfão de pai aos 5 anos de idade.
+                
+                Seu padrasto era o comandante militar João Miguel Rosa, que foi nomeado cônsul de Portugal em Durban, na África do Sul. Acompanhando a família Fernando Pessoa seguiu para a África do Sul, onde recebeu educação inglesa no colégio de freiras e na Durban High School.
+                
+                Carreira Literária
+                Em 1901, Fernando Pessoa escreveu seus primeiros poemas em inglês. Com 16 anos já havia lido os grandes autores da língua inglesa, como William Shakespeare, John Milton e Allan Poe.
+              </h5> 
+            </div>
+    </div>
+      <center>
+        <div class="row  linha-baixo1  col-main">
+        <h1  class=""></h1>
+        
+          <div class="col-sm   ">
+            <a href="livro_escolhido.html">
+              <img src="img/livros/xo.jpg"  style="height: 80%;" class="livros" alt="Livro1" />
+            </a>  
+              <p>O Xango Baker Street</p>
+          
+     
+          </div>
+          <div class="col-sm">
+            <a href="livro_escolhido.html">
+              <img src="img/livros/jojo.jpg"  style="height: 80%;" class="livros" alt="Livro1" />
+            </a>
+            <p> Jojo Bizarre Adventures</p>
+          
+          
+       
+          </div>
+          <div class="col-sm">
+            <a href="livro_escolhido.html">
+              <img src="img/livros/one.jpg" style="height: 80%;" class="livros" alt="Livro1" />
+            </a>
+              <p> One Piece</p>
+   
+          </div>
+        </div>
+      </center>
+    </div>
+  </div>
+  <center>
+
+
+    <script src="bootstrap/bootstrap.js"></script>
+
+    
+</body>
+</html>

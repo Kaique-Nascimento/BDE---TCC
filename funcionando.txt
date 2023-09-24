@@ -1,0 +1,34 @@
+<?php
+header("Content-Type: application/json; charset=UTF-8");
+include_once "conexao.php";
+
+if(isset($_FILES["foto"]) && isset($_FILES["pdf"]) && isset($_POST["nome"])) {
+    $arquivo = $_FILES["pdf"];
+    $foto = "img/autores/".$_FILES["foto"]["name"];
+    move_uploaded_file($_FILES["foto"]["tmp_name"], $foto);
+    $arquivoTemporario = $arquivo["tmp_name"];
+    $nomeArquivo = $arquivo["name"];
+        $diretorioDestino = 'pdf/livros/';
+        $pdf = $diretorioDestino . $nomeArquivo;
+        move_uploaded_file($arquivoTemporario, $pdf);
+        $nome = $_POST["nome"];
+    $sql = "INSERT INTO tb01_foto
+	(tb01_foto, tb01_pdf, tb01_nome)
+	VALUES (?, ?, ?)";
+    
+    try {
+        $comando = $banco->prepare($sql);
+        $comando->execute(array($foto, $pdf, $nome));
+        
+        $mensagem = "Imagem inserida com sucesso!";
+    } catch (PDOException $e) {
+        $mensagem = "Erro ao inserir o registro!";
+    }
+}
+else {
+    $mensagem = "Os dados não foram informados!";
+}
+    
+echo json_encode(array("mensagem" => $mensagem));
+
+?>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bem-Vindo</title>
+    <link rel="stylesheet" id="css-tema" href="css/css.css"/>
+    <link href="bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  </head>
+  <body>
+    <header>
+      <div id="top">&nbsp;</div>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a href="index.html" class="nav-link active">
+            <img id="img-tema" src="img/logo/claro.png" width="80em"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul
+              class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+              style="--bs-scroll-height: 100px"
+            >
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="livros.html">Livros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="autores.html">Autores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="telaAutores.html">autores</a>
+              </li>
+              <li class="nav-item">
+                
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Link
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#login.html">Lo</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+           
+            </ul>
+            <input type="checkbox" id="tema">      
+
+            <i id="icone-tema" class="fa-solid fa-3x fa-sun" style="color: #fff;"></i>
+           
+          </input>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Procurar"
+                aria-label="Search"
+              />
+              <button class="editado" type="submit">
+                Procurar
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="banner esquerda"></div>
+    <div class="banner direita"></div>
+    
+<script>
+  /*
+  a = sessionStorage.getItem('logado');
+  if(a == 'sim'){
+    document.write("logado");
+  }
+  else{
+    document.write("deslogado");
+
+  }
+  */
+  var linkTema = document.getElementById("css-tema");
+        var icone = document.getElementById("icone-tema");
+        var img = document.getElementById("img-tema");
+        var temaClaro = "css/css.css";
+        var temaEscuro = "css/escuro.css";
+
+        function mudarParaClaro() {
+            sessionStorage.setItem("tema", "claro");
+            linkTema.href = "css/css.css";
+            icone.className = "fa-solid fa-3x fa-sun";
+            img.src = "img/logo/claro.png";
+        }
+
+        function mudarParaEscuro() {
+            sessionStorage.setItem("tema", "escuro");
+            linkTema.href = "css/escuro.css";
+            icone.className = "fa-solid fa-3x fa-moon";
+            img.src = "img/logo/escuro.png";
+
+        }
+
+        icone.addEventListener("click", function () {
+            if (tema.checked) {
+                tema.checked = false;
+                mudarParaEscuro();
+            } else {
+                tema.checked = true;
+                mudarParaClaro();
+            }
+        });
+
+        // Verifique o tema armazenado na sessionStorage e configure-o inicialmente
+        if (sessionStorage.getItem("tema") === "escuro") {
+            mudarParaEscuro();
+        } else {
+            mudarParaClaro();
+        }
+  </script>
+    <main>
+      <center>
+        <main>
+         
+          <div class="container">
+            <h1 class="text-center">Autores em Destaque</h1>
+           
+            <div class="row" id="autores">
+            
+
+          </div>
+        
+           </div>
+         
+           
+              
+          </div>
+         
+</div>  
+
+              
+          <!-- Modal Cadastro Autor -->
+          <div
+          class="modal fade"
+          id="autor_modal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Cadastro de Autor
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <center>
+                  <div class="card-modal">
+                    <div class="row">
+                     
+                      <div class="mx-auto" style="width: 50%">
+
+                        <div class="inputBox">
+                          <span class="user">Nome do Autor</span>
+                          <input type="text" id="nome_autor" name="nome_autor" required/>
+                        </div>
+                        <div class="inputBox">
+                          <span class="user">Nascimento</span>
+                          <input type="date" id="data_nascimento" name="data_nascimento" required/>
+                        </div>
+                        <div class="inputBox">
+                          <span class="user">Selecione a principal categoria:</span>
+                          <br>
+                          <select name="select_categoria" id="select_categoria">
+                          
+                          </select>
+                          <a href="#" onclick="modalCategoria()">
+                            <button class="btn btn-primary cadastro">Cadastrar nova categoria</button>
+                          </a>
+
+                 
+                     
+
+                        </div>
+                      </div>
+                      <div class="mx-auto" style="width: 50%">
+                        <div class="inputBox">
+                          <span class="user">Nacionalidade</span>
+                          <input type="text" id="nacionalidade" name="nacionalidade" required />
+                        </div>
+                        <div class="inputBox">
+                          <span class="user">Falecimento</span>
+                          <input type="date" id="data_falecimento" name="data_falecimento"required />
+                        </div>
+                        <div class="inputBox">
+                          <span class="user">Selecione o Período <br> que viveu:</span>
+                          <br>
+                          <select name="select_periodo" id="select_periodo">
+                          </select>
+                          <button class="btn btn-primary cadastro" onclick="modalPeriodo()">Cadastrar novo período</button>
+                        </div>
+
+                      </div>
+                      <div class="mx-auto" style="width: 50%">
+                        <div class="inputBox">
+                          <div class="form-group">
+                            <span class="user">Imagem do Autor</span>
+                          <label class="custom-file-upload">
+                            <i class="fas fa-cloud-upload"></i> Escolha um arquivo
+                            <input
+                              type="file"
+                              id="arquivo"
+                              name="arquivo"
+                              accept="image/jpeg, image/png"
+                            />
+                          </label>
+
+
+
+                            <br>
+                          </div> 
+                          <!--<label style="margin-left:18%; margin-top: 7%" class="foto" id="fotos" for="arquivo"> FOTO </label>	-->	
+                          	<br>
+                          <div id="fileMessage2" class="file-message"></div>
+                          <input type="hidden" id="id_autor" name="id_autor">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="inputBox text-center">
+                      <span class="user">Biografia do Autor</span>
+                      <textarea
+                        rows="5"
+                        cols="200"
+                        placeholder="Escreva a biografia do autor..."
+                        oninput="checkInput(this)"
+                        id="biografia"
+                        name="biografia"
+                      ></textarea>
+                    </div>
+                  </div>
+                </center>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="exit" data-bs-dismiss="modal">
+                  Cancelar
+                </button>
+                <button type="submit" class="enter" data-bs-dismiss="modal" onclick="cadAutor()">Cadastrar</button>
+                <script>
+function cadAutor() {
+    const formData = new FormData();
+    var autor = document.querySelector("#nome_autor").value;
+    var nacionalidade = document.querySelector("#nacionalidade").value;
+    var nascimento = document.querySelector("#data_nascimento").value;
+    var falecimento = document.querySelector("#data_falecimento").value;
+    var biografia = document.querySelector("#biografia").value;
+
+    var categoria = document.getElementById('select_categoria');
+    var valor_categoria = categoria.options[categoria.selectedIndex].value;
+
+    var periodo = document.getElementById('select_periodo');
+    var valor_periodo = periodo.options[periodo.selectedIndex].value;
+    var foto = document.getElementById('arquivo').files[0];
+
+    formData.append("nome", autor);
+    formData.append("nacionalidade", nacionalidade);
+    formData.append("nascimento", nascimento);
+    formData.append("falecimento", falecimento);
+    formData.append("biografia", biografia);
+    formData.append("categoria", valor_categoria);
+    formData.append("periodo", valor_periodo);
+    formData.append("arquivo", foto);
+    var url = "";
+
+    if (autor != null || autor != "") {
+    if (cod_alt != "" && cod_alt == codd) {
+        url = `php/autores/autor_editar.php`;
+        formData.append("codigo", cod_alt);
+    } else {
+        url = `php/autores/autor_cadastro.php`;
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: formData,
+    })
+    .then((response) => response.json()) 
+    .then((data) => {
+        console.log(data);
+        alert(data.mensagem);
+        carregarAutores();
+    })
+    .catch((error) => {
+        console.error("Erro na requisição fetch:", error);
+    });
+}
+}
+
+                  </script>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!--  -->
+ <!-- Modal Cadastro Categoria -->
+ <div
+ class="modal fade"
+ id="categoria_modal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h1 class="modal-title fs-5" id="exampleModalLabel">
+         Cadastro de Categoria
+       </h1>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+     </div>
+     <div class="modal-body cate">
+       <center>
+         <div class="card-modal">
+           <div class="inputBox">
+             <span class="user">Nome da Categoria</span>
+             <input
+               type="text"
+               id="nome_categoria"
+               required="required"
+             />
+           </div>
+         </div>
+       </center>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="exit" data-bs-dismiss="modal">
+         Cancelar
+       </button>
+       <button
+         type="button"
+         class="enter"
+         data-bs-dismiss="modal"
+         onclick="cadCategoria()"
+       >
+         Cadastrar
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- -->
+
+
+          <!--Modal cadastro período -->
+
+          <div
+        class="modal fade"
+        id="periodo_modal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Cadastro de Período
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <center>
+                <div class="card-modal">
+                  <div class="inputBox">
+                    <span class="user">Nome do Período</span>
+                    <input type="text" id="periodo_nome" required="required" />
+                  </div>
+                  <div class="row">
+                    <div class="col-sm">
+                      <div class="inputBox">
+                        <span class="user">Inicío do Período</span>
+                        <input
+                          type="text"
+                          id="inicio_periodo"
+                          required="required"
+                          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+                        />
+
+                      </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="inputBox">
+                        <span class="user">Fim do Período</span>
+                        <input
+                          type="text"
+                          id="fim_periodo"
+                          required="required"
+                          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+                        />
+                      </div>
+                    </div>
+                  </div>
+                 
+                </div>
+              </center>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="exit" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="button" class="enter" data-bs-dismiss="modal" onclick="cadPeriodo()">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+          <!-- -->
+          <script>
+
+              function modalPeriodo(){
+        
+        var myModal = new bootstrap.Modal(
+    document.getElementById("periodo_modal")
+  );
+  myModal.show();
+};
+function modalCategoria(){
+                  document.getElementById("categoria")
+                    var myModal = new bootstrap.Modal(
+                      document.getElementById("categoria_modal")
+                    );
+                    myModal.show();
+                }
+            function modalAutor(){
+var myModal = new bootstrap.Modal(
+     document.getElementById("autor_modal")
+   );
+   myModal.show();
+ }
+            function modalAutorLimpo(){
+              document.querySelector("#nome_autor").value = "";
+  document.querySelector("#nacionalidade").value = "";
+  document.querySelector("#data_nascimento").value = "";
+  document.querySelector("#data_falecimento").value = "";
+  document.querySelector("#biografia").value = "";
+var myModal = new bootstrap.Modal(
+     document.getElementById("autor_modal")
+   );
+   myModal.show();
+ }
+ function cadCategoria() {
+
+    var categoria = document.querySelector("#nome_categoria").value;
+    var url = "";
+    if (categoria == null || categoria == "") {
+      alert("Digita tudo");
+    }
+    else {
+      url = `php/categorias/categoria_cadastro.php?nome=${categoria}`;
+      alert(`Categoria: ${categoria}\n cadastrada com Sucesso!`);
+      categoria.value = null;
+    }
+    fetch(url)
+      .then((response) => response.json())
+
+      .then((data) => {
+        console.log(data);
+        alert(data.mensagem);
+        carregarCategorias();
+      });
+  }
+  function cadPeriodo() {
+                  var periodo = document.querySelector("#periodo_nome").value;
+                  var inicio = document.querySelector("#inicio_periodo").value;
+                  var fim = document.querySelector("#fim_periodo").value;
+                  var url = "";
+                  if (periodo != null && periodo != "") {
+                    url = `php/periodos/periodo_cadastro.php?nome=${periodo}&inicio=${inicio}&fim=${fim}`;
+                    alert(`Categoria: ${periodo}\n cadastrada com Sucesso!`);
+                    periodo.value = null;
+                  } else {
+                    alert("Digite todas as informações");
+                  }
+                  fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                      console.log(data);
+                      alert(data.mensagem);
+                      carregarPeriodos();
+                    });
+                }
+ function checkInput(element) {
+          if (element.value.trim() !== "") {
+            element.classList.add("has-text");
+          } else {
+            element.classList.remove("has-text");
+          }
+        }
+
+        function carregarCategorias() {
+    var url = "php/categorias/categoria.php";
+
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            var options = "";
+for(let item in data){
+  options += `<option value="${data[item].tb04_nome_categoria}" name="${data[item].tb04_nome_categoria}">${data[item].tb04_nome_categoria}</option>`; // Ajuste dos campos
+
+}
+            
+
+document.querySelector("#select_categoria").innerHTML = options;
+        });
+}
+
+function carregarPeriodos() {
+    var url = "php/periodos/periodo.php";
+
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            var options = "";
+for(let item in data){
+  options += `
+  <option value="${data[item].tb05_nome_periodo}" name="${data[item].tb05_nome_periodo}">${data[item].tb05_nome_periodo}</option>`; // Ajuste dos campos
+
+}
+            
+
+var selectElement = document.querySelector("#select_periodo").innerHTML = options;
+        });
+}
+
+// Chame a função para carregar as categorias ao carregar a página
+window.addEventListener("load", (event) => {
+                  carregarCategorias();
+                  carregarPeriodos();
+                  carregarAutores();
+      });
+function carregarAutores(){
+  var url = "php/autores/autor.php";
+
+fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        var contador = 1;
+        var informacoes = `    <div class="col"> <br>
+                <a href="#" id="link-card-livro" onclick="modalAutorLimpo()">
+                  <div class="card card-equal-height" ">
+                    <div class="caixa-autores d-flex align-items-center justify-content-center">
+                      <i class="fas fa-plus icone seg d-flex align-items-center justify-content-center"></i>
+                    </div>
+                    <div class="card-body2 text-center">
+                      <h7 class="card-subtitle">Adicionar</h7>
+                      </a>
+                    </div>
+                  </div>
+               
+                  &nbsp &nbsp
+                             </div>  `;
+for(let item in data){
+  contador++;
+var id = document.getElementById('id_autor').value = data[item].tb03_id_autor;
+  //if (contador%6 ==0) informacoes+= '</div> <div class="row">'
+  informacoes += `
+
+ 
+    <div class="col"> 
+    <br>
+
+      <div class="card-fotos card-equal-height" style="  margin-right: 200%; padding-top: 10px "> 
+      <a href="telaAutores.html?codigo=${data[item].tb03_id_autor}">
+        <img src="img/autores/${data[item].tb03_foto}" width="100%" style="margin-top: 20%;"class="autores" alt="Livro1" />
+           <div class="card-body2">
+             <h5 class="card-tittle tt">${data[item].tb03_nome_autor}</h5>
+           </div>  
+           </a>     
+           <h7 class="card-subtittle">10 publicações</h7>
+           
+    
+           <div class="row">
+             <div class="col">
+<a href="#" onclick="editarAutor('${data[item].tb03_nome_autor}', ${data[item].tb03_id_autor}, 
+'${data[item].tb03_nacionalidade}', '${data[item].tb03_nascimento}', '${data[item].tb03_obito}', 
+'${data[item].tb03_biografia}', '${data[item].tb03_foto_autor}')" class="icone">
+  <i class="fas fa-edit" >
+      </i>  
+</a>
+<a href="#" onclick="apagarAutor(${data[item].tb03_id_autor}, '${data[item].tb03_nome_autor}')"class="icone">
+          <i class="fas fa-trash"></i>
+          
+</a>
+
+            </div>
+            
+             </div>
+      </div>
+    </div>
+
+                   
+                   
+              
+                  
+                  
+                  `
+}
+        
+
+document.querySelector("#autores").innerHTML = informacoes;
+    });
+}
+
+const fileInput = document.querySelector('.custom-file-upload input[type="file"]');
+const fileMessage = document.querySelector('.file-message');
+function handleFileChange() {
+    if (fileInput.files.length > 0) {
+        const fileName = fileInput.files[0].name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'jfif']; 
+
+        if (allowedExtensions.includes(fileExtension)) {
+            fileMessage.innerHTML = `Imagem "${fileName}" enviada com sucesso!`;
+            fileMessage.style.color = 'green'; 
+        } else {
+            fileMessage.innerHTML = 'Apenas imagens (jpg, jpeg, png, jfif) são permitidas.';
+            fileMessage.style.color = 'red';
+            fileInput.value = ''; 
+        }
+
+        fileMessage.style.display = 'block';
+    } else {
+        fileMessage.style.display = 'none';
+    }
+}
+fileInput.addEventListener('change', handleFileChange);
+
+
+
+
+
+var cod_alt = 0;
+  var codd = 0;
+function editarAutor(nomeAutor, codigoAutor, nacionalidade, nascimento, falecimento, biografia, fotoAutor){
+  cod_alt = codigoAutor;
+  codd = codigoAutor;
+  modalAutor();
+
+  var dataNascimento = new Date(nascimento);
+  var dataFormatadaNascimento = dataNascimento.toISOString().split("T")[0];
+
+  var dataFalecimento = new Date(falecimento);
+  var dataFormatadaFalecimento = dataFalecimento.toISOString().split("T")[0];
+
+  document.querySelector("#nome_autor").value = nomeAutor;
+  document.querySelector("#nacionalidade").value = nacionalidade;
+  document.querySelector("#data_nascimento").value = dataFormatadaNascimento;
+  document.querySelector("#data_falecimento").value = dataFormatadaFalecimento;
+  document.querySelector("#biografia").value = biografia;
+
+  var categoria = document.getElementById('select_categoria');
+  var valor_categoria = categoria.options[categoria.selectedIndex].value;
+
+  var periodo = document.getElementById('select_periodo');
+  var valor_periodo = periodo.options[periodo.selectedIndex].value;
+}
+
+                  function apagarAutor(codigoAutor, nomeAutor){
+                    var url = 'php/autores/autor_excluir.php?codigo=' + codigoAutor
+if (confirm("Deseja realmente excluir:  "+ nomeAutor + "?")) {
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          carregarAutores();
+        })
+  }
+}
+
+
+        
+          </script>
+          
+</script>
+<script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script src="bootstrap/bootstrap.js"></script>
+  </body>
+</html>

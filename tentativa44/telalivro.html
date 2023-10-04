@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bem-Vindo</title>
+        <link rel="stylesheet" id="css-tema" href="css/css.css"/>
+        <link href="bootstrap/bootstrap.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+      </head>
+<div>
+  <header>
+    <div id="top">&nbsp;</div>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="index.html" class="nav-link active">
+          <img id="img-tema" src="img/logo/claro.png" width="80em"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="livros.html">Livros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="autores.html">Autores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="telaAutores.html">autores</a>
+            </li>
+            <li class="nav-item">
+              
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Link
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#login.html">Lo</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+         
+          </ul>
+          <input type="checkbox" id="tema">      
+
+          <i id="icone-tema" class="fa-solid fa-3x fa-sun" style="color: #fff;"></i>
+         
+        </input>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Procurar"
+              aria-label="Search"
+            />
+            <button class="editado" type="submit">
+              Procurar
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="banner esquerda"></div>
+  <div class="banner direita"></div>
+
+<script>
+/*
+a = sessionStorage.getItem('logado');
+if(a == 'sim'){
+  document.write("logado");
+}
+else{
+  document.write("deslogado");
+
+}
+*/
+var linkTema = document.getElementById("css-tema");
+      var icone = document.getElementById("icone-tema");
+      var img = document.getElementById("img-tema");
+      var temaClaro = "css/css.css";
+      var temaEscuro = "css/escuro.css";
+
+      function mudarParaClaro() {
+          sessionStorage.setItem("tema", "claro");
+          linkTema.href = "css/css.css";
+          icone.className = "fa-solid fa-2x fa-sun";
+          img.src = "img/logo/claro.png";
+      }
+
+      function mudarParaEscuro() {
+          sessionStorage.setItem("tema", "escuro");
+          linkTema.href = "css/escuro.css";
+          icone.className = "fa-solid fa-2x fa-moon";
+          img.src = "img/logo/escuro.png";
+
+      }
+
+      icone.addEventListener("click", function () {
+          if (tema.checked) {
+              tema.checked = false;
+              mudarParaEscuro();
+          } else {
+              tema.checked = true;
+              mudarParaClaro();
+          }
+      });
+
+      // Verifique o tema armazenado na sessionStorage e configure-o inicialmente
+      if (sessionStorage.getItem("tema") === "escuro") {
+          mudarParaEscuro();
+      } else {
+          mudarParaClaro();
+      }
+      window.addEventListener('load', (event) => {
+    carregarLivros();
+        });
+        function carregarLivros(){
+          var queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var codigo = urlParams.get('codigo');    
+    var url = `php/livros/livro_selecionado.php?codigo=${codigo}`; 
+var informacoes = "";
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);          
+            for(let item in data){
+              /*
+              a = `${data[item].tb03_obito_formatado}`;
+            if(a === '00/00/0000'){
+              a = "Vivo";
+            }
+            */
+               informacoes += `
+               <div class="row">
+            <div class="col-md-2 text-left">
+              <a href="pdf/${data[item].tb01_pdf}">
+
+                <img src="img/livros/${data[item].tb01_ftcapa}" style="max-width: 100%; padding-top: 100px;" alt="Imagem de Livro">
+              </a>
+  <a href="pdf/${data[item].tb01_pdf}" download="${data[item].tb01_pdf}">
+                <button class="download">
+                    <i class="fa-solid fa-download"></i>
+                  </button>
+                  </a>
+         
+            </div> 
+            <div class="col-md-8" style="padding-top: 100px;">
+              <div class="row">
+                <div class="col-md-4">
+                  <h3 class="titulo">${data[item].tb01_nome_livro}</h3>
+                </div>
+                <div class="col-md-4">
+                  <button class="btniconedt" style="margin-left: 70%;">
+                    <i class="fas fa-edit fa-2x icone edt"id="icon" >            
+                       </i>
+                  </button>&nbsp 
+                       </div>
+                <div class="col-md-4">
+                  <button class="btnicon">
+                    <i class="fa-solid fa-2x fa-trash"id="icon" style="color: #ed0c0c;">
+                   </button></i>              
+                  </div>
+              </div>
+      
+    <h6>Por <a href="telaAutores.html?codigo=${data[item].tb01_id_autor}">${data[item].nome_autor}</a>(autor)</h6><br><br>
+    <h5>${data[item].tb01_sinopse}
+      
+    </h5>
+    <div class="row" id="colicon">
+      <div class="col-md-3">
+        <h6> Editora</h6>
+        <i class="fa-solid  fa-2x fa-building" style="color: #1B69A6;"></i>
+        <h6 id="subtitulo">${data[item].tb01_editora}</h6>
+      </div>
+      <div class="col-md-2">
+        <h6> Idioma</h6>
+        <i class="fa  fa-2x fa-language" aria-hidden="true" style="color: #1B69A6;"></i>
+        <h6 id="subtitulo">Português</h6>
+      </div>
+      <div class="col-md-4">
+        <h6> Data de Publicação</h6>
+        <i class="fa-solid fa-2x fa-calendar" style="color: #1B69A6;"></i>
+        <h6 id="subtitulo">${data[item].tb01_data_formatada}</h6>
+      </div>
+      <div class="col-md-3">
+        <h6> Idade de Leitura</h6>
+        <i class="fa-solid   fa-2x fa-child"style="color: #1B69A6; "></i>
+        <h6 id="subtitulo">${data[item].tb01_classificacao_indicativa}</h6>
+      </div>
+    </div>
+            </div> 
+            </div>
+            `;
+            }
+           
+            document.querySelector(".container").innerHTML = informacoes;
+        })
+        .catch((error) => {
+            console.error("Erro na requisição fetch:", error);
+        });
+        }
+</script>
+      <div class="container font-monospace">
+    </div>
+    </div>
+
+    <script src="bootstrap/bootstrap.js"></script>
+
+    
+</body>
+</html>

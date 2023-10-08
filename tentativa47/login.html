@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bem-Vindo</title>
+    <link rel="stylesheet" id="css-tema" href="css/css.css" />
+    <link href="bootstrap/bootstrap.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body style="background-color: #26ccdc">
+    <a href="index.html">
+      <i class="fa-solid fa-3x fa-arrow-left" style="color: #6288de"></i>
+    </a>
+
+    <div
+      class="container"
+      style="margin-top: 50px; padding-left: 10%; padding-bottom: 5%"
+    >
+      <div class="row">
+        <div class="col-md-6">
+          <img
+            src="img/login.jpg"
+            style="margin-left: 18%; border-radius: 20px"
+            alt="Imagem de ilustração"
+            class="img-fluid fumacinha"
+          />
+        </div>
+        <div class="col-md-4" id="card-login">
+          <div class="card2">
+            <form class="form" id="loginForm">
+              <p class="form-title2 text-left" id="titulo">Login</p>
+              <div class="input-container">
+                <input
+                  type="text"
+                  placeholder="RM"
+                  id="RM_login"
+                  required="required"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                  maxlength="5"
+                />
+
+                <input
+                  type="text"
+                  placeholder="Nome"
+                  id="nome"
+                  required="required"
+                />
+                <input
+                  type="text"
+                  placeholder="RM2"
+                  id="RM_cadastro"
+                  required="required"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                  maxlength="5"
+                  style="display: none"
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail2"
+                  id="email_cadastro"
+                  required="required"
+                />
+
+                <input
+                  type="email"
+                  placeholder="E-mail3"
+                  id="email_recuperacao"
+                  required="required"
+                />
+              </div>
+              <div class="input-container">
+                <input placeholder="Senha" id="senha_login" type="password" />
+                <input
+                  placeholder="Senha2"
+                  id="senha_cadastro"
+                  type="password"
+                />
+              </div>
+
+              <center>
+                <button
+                  class="submit"
+                  id="botao_login"
+                  type="button"
+                  onclick="login()"
+                >
+                  Login
+                </button>
+                <button
+                  class="submit"
+                  id="botao_cadastro"
+                  type="button"
+                  onclick="cadastro()"
+                >
+                  Cadastro
+                </button>
+                <button
+                  class="submit"
+                  id="botao_codigo"
+                  type="button"
+                  onclick="enviaCodigo()"
+                >
+                  Enviar Código
+                </button>
+              </center>
+              <div class="input-container" style="margin-top: 10%">
+                <input
+                  type="text"
+                  placeholder="Código de acesso"
+                  id="codigo_recuperacao"
+                  required="required"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                  maxlength="5"
+                />
+                <input
+                  type="password"
+                  placeholder="Nova senha"
+                  id="senha_recuperacao"
+                  required="required"
+                />
+              </div>
+              <center>
+                <button
+                  class="submit"
+                  id="botao_recuperacao"
+                  type="button"
+                  onclick="verificaCodigo()"
+                  style="margin-top: 5%"
+                >
+                  Recuperar
+                </button>
+                <button
+                  class="submit"
+                  id="botao_senha_nova"
+                  type="button"
+                  onclick="cadastraSenha()"
+                  style="margin-top: 10%"
+                >
+                  Cadastrar Senha
+                </button>
+              </center>
+            </form>
+          </div>
+          <p class="signup-link" id="signup-link">
+            <span id="bosta">Sem </span>Conta?
+            <a href="#" id="situacao" onclick="troca()">Se cadastre-se</a>
+            <span id="esqueceu_senha"
+              >Esqueceu sua senha?
+              <a href="#" onclick="recuperarSenha()">Recupere sua senha</a>!
+            </span>
+            <script>
+              function enviaCodigo() {
+                var email = document.getElementById("email_recuperacao").value;
+                var botao = document.getElementById("botao_recuperacao");
+                var codigo = document.getElementById("codigo_recuperacao");
+
+                var url = "";
+                var emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (email.match(emailFormat)) {
+                  var code =
+                    Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+                  url = `php/usuarios/usuario_codigo.php?email=${email}&codigo=${code}`;
+                  fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                      console.log(data);
+                      var e = data.coisa;
+                      if (e === 0) {
+                        alert("O Código foi enviado para o email com sucesso!");
+                        codigo.style.display = "block";
+                        botao.style.display = "block";
+
+                        /*
+              try{
+            fetch(`https://ntfy.sh/mensagem`, {
+                method: 'POST', 
+                headers: {
+                    'Title' : `BookVerse - Codigo de Redefenicao de Senha`,
+                    'Email': `${email}`
+                },
+                body: `Eis aqui o seu código de redefinição de senha: ${code}`,
+            });
+          }
+    catch (e){
+        alert ("Algo deu errado: "+e);
+    }
+                                  } 
+                                  else if(e=== 2) 
+                                  {
+                    alert(data.mensagem);
+                }
+            })
+            .catch((error) => {
+                console.error("Erro na requisição:", error);
+            });
+            }
+*/
+                      }
+                    });
+                }
+              }
+              function verificaCodigo() {
+                var email = document.getElementById("email_recuperacao");
+                var codigo = document.getElementById("codigo_recuperacao");
+                var senha = document.getElementById("senha_recuperacao");
+                var botao = document.getElementById("botao_recuperacao");
+                var botao_codigo = document.getElementById("botao_codigo");
+                var botao_senha = document.getElementById("botao_senha_nova");
+                console.log(email.value);
+                var url = `php/usuarios/usuario_recuperar.php?email=${email.value}&codigo=${codigo.value}`;
+                fetch(url)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log(data);
+                    var e = data.coisa;
+                    if (e === 0) {
+                      senha.style.display = "block";
+                      codigo.style.display = "none";
+                      botao.style.display = "none";
+                      botao_codigo.style.display = "none";
+                      email_recuperacao.style.display = "none";
+                      botao_senha.style.display = "block";
+                      alert("Digite uma nova senha");
+                    } else {
+                      alert(data.mensagem);
+                    }
+                  })
+                  .catch((error) => {
+                    console.error("Erro na requisição:", error);
+                  });
+              }
+              function cadastraSenha() {
+                var email = document.getElementById("email_recuperacao").value;
+                var senha = document.getElementById("senha_recuperacao").value;
+
+                var url2 = `php/usuarios/usuario_editar_senha.php?email=${email}&senha=${senha}`;
+                fetch(url2)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    var e = data.coisa;
+                    if (e === 0) {
+                      alert("Senha cadastrada com sucesso!");
+                      escondeCadastro();
+                    } else {
+                      alert("Digite");
+                    }
+                  });
+              }
+              function troca() {
+                if (RM_cadastro.style.display === "none") {
+                  escondeLogin();
+                } else {
+                  escondeCadastro();
+                }
+              }
+
+              // Funções de login e cadastro aqui
+              function login() {
+                var rm = document.getElementById("RM_login").value;
+                var senha = document.getElementById("senha_login").value;
+                var url = "";
+
+                if (
+                  rm !== null &&
+                  rm !== "" &&
+                  senha !== null &&
+                  senha !== ""
+                ) {
+                  url = `php/usuarios/usuario_logado.php?rm=${rm}&senha=${senha}`;
+
+                  fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                      console.log(data);
+                      var e = data.coisa;
+                      if (e === 0) {
+                        alert("Bem-Vindo!");
+                        sessionStorage.setItem("logado", "sim");
+                        window.location.href = "index.html";
+                      } else {
+                        alert(data.mensagem);
+                      }
+                    })
+                    .catch((error) => {
+                      console.error("Erro na requisição:", error);
+                    });
+                } else {
+                  alert("Digite todos os campos.");
+                }
+              }
+              function recuperarSenha() {
+                var RM_login = document.getElementById("RM_login");
+                var senha_login = document.getElementById("senha_login");
+                var RM_cadastro = document.getElementById("RM_cadastro");
+                var senha_cadastro = document.getElementById("senha_cadastro");
+                var botao_login = document.getElementById("botao_login");
+                var botao_cadastro = document.getElementById("botao_cadastro");
+                var situacao = document.getElementById("situacao");
+                var titulo = document.getElementById("titulo");
+                var email_cadastro = document.getElementById("email_cadastro");
+                var nome = document.getElementById("nome");
+                var textinho = document.getElementById("bosta");
+                var esqueceu_senha = document.getElementById("esqueceu_senha");
+                var email_recuperacao =
+                  document.getElementById("email_recuperacao");
+                var botao_recuperacao =
+                  document.getElementById("botao_recuperacao");
+                var botao_codigo = document.getElementById("botao_codigo");
+                var codigo = document.getElementById("codigo_recuperacao");
+
+                codigo.style.display = "none";
+
+                RM_cadastro.style.display = "none";
+                senha_cadastro.style.display = "none";
+                nome.style.display = "none";
+                RM_login.style.display = "none";
+                senha_login.style.display = "none";
+                botao_login.style.display = "none";
+                botao_cadastro.style.display = "none";
+                email_cadastro.style.display = "none";
+                esqueceu_senha.style.display = "none";
+                email_recuperacao.style.display = "block";
+                botao_recuperacao.style.display = "none";
+                botao_codigo.style.display = "block";
+                botao_codigo.style.display = "block";
+                textinho.innerHTML = "Sem ";
+                situacao.innerHTML = "Se cadastre-se!";
+                RM_login.value = "";
+                senha_login.value = "";
+                nome.value = "";
+                titulo.innerHTML = "Recuperação de Senha";
+              }
+              function cadastro() {
+                var rm = document.getElementById("RM_cadastro").value;
+                var senha = document.getElementById("senha_cadastro").value;
+                var email = document.getElementById("email_cadastro").value;
+                var nome = document.getElementById("nome").value;
+
+                var url = "";
+
+                if (
+                  rm != null &&
+                  rm != "" &&
+                  email != null &&
+                  email != "" &&
+                  senha != null &&
+                  senha != "" &&
+                  nome != null &&
+                  nome != ""
+                ) {
+                  url = `php/usuarios/usuario_cadastro.php?rm=${rm}&email=${email}&senha=${senha}&nome=${nome}`;
+                } else {
+                  alert("Digita tudo");
+                }
+                fetch(url)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log(data);
+                    var e = data.coisa;
+                    if (e == 1) {
+                      alert(data.mensagem);
+                      document.getElementById("RM_cadastro").value = "";
+                    } else {
+                      alert(data.mensagem);
+                      escondeCadastro();
+                    }
+                  });
+              }
+              function escondeCadastro() {
+                var RM_login = document.getElementById("RM_login");
+                var senha_login = document.getElementById("senha_login");
+                var RM_cadastro = document.getElementById("RM_cadastro");
+                var senha_cadastro = document.getElementById("senha_cadastro");
+                var botao_login = document.getElementById("botao_login");
+                var botao_cadastro = document.getElementById("botao_cadastro");
+                var situacao = document.getElementById("situacao");
+                var titulo = document.getElementById("titulo");
+                var email_cadastro = document.getElementById("email_cadastro");
+                var nome = document.getElementById("nome");
+                var textinho = document.getElementById("bosta");
+                var esqueceu_senha = document.getElementById("esqueceu_senha");
+                var email_recuperacao =
+                  document.getElementById("email_recuperacao");
+                var botao_recuperacao =
+                  document.getElementById("botao_recuperacao");
+                var botao_codigo = document.getElementById("botao_codigo");
+                var codigo = document.getElementById("codigo_recuperacao");
+                var senha_recuperacao =
+                  document.getElementById("senha_recuperacao");
+                var email_recuperacao =
+                  document.getElementById("email_recuperacao");
+                var botao_senha_nova =
+                  document.getElementById("botao_senha_nova");
+
+                botao_recuperacao.style.display = "none";
+                botao_codigo.style.display = "none";
+                codigo.style.display = "none";
+                senha_recuperacao.style.display = "none";
+                email_recuperacao.style.display = "none";
+                botao_senha_nova.style.display = "none";
+
+                RM_cadastro.style.display = "none";
+                senha_cadastro.style.display = "none";
+                nome.style.display = "none";
+                RM_login.style.display = "block";
+                senha_login.style.display = "block";
+                botao_login.style.display = "block";
+                botao_cadastro.style.display = "none";
+                email_cadastro.style.display = "none";
+                esqueceu_senha.style.display = "block";
+                email_recuperacao.style.display = "none";
+                textinho.innerHTML = "Sem ";
+                situacao.innerHTML = "Se cadastre-se";
+                RM_login.value = "";
+                senha_login.value = "";
+                nome.value = "";
+                titulo.innerHTML = "Login";
+              }
+              function escondeLogin() {
+                var RM_login = document.getElementById("RM_login");
+                var senha_login = document.getElementById("senha_login");
+                var RM_cadastro = document.getElementById("RM_cadastro");
+                var senha_cadastro = document.getElementById("senha_cadastro");
+                var botao_login = document.getElementById("botao_login");
+                var botao_cadastro = document.getElementById("botao_cadastro");
+                var situacao = document.getElementById("situacao");
+                var titulo = document.getElementById("titulo");
+                var email_cadastro = document.getElementById("email_cadastro");
+                var nome = document.getElementById("nome");
+                var textinho = document.getElementById("bosta");
+                var esqueceu_senha = document.getElementById("esqueceu_senha");
+                var email_recuperacao =
+                  document.getElementById("email_recuperacao");
+                var botao_recuperacao =
+                  document.getElementById("botao_recuperacao");
+                var botao_codigo = document.getElementById("botao_codigo");
+                var codigo = document.getElementById("codigo_recuperacao");
+                var senha_recuperacao =
+                  document.getElementById("senha_recuperacao");
+                var email_recuperacao =
+                  document.getElementById("email_recuperacao");
+                var botao_senha_nova =
+                  document.getElementById("botao_senha_nova");
+                senha_recuperacao.style.display = "none";
+                email_recuperacao.style.display = "none";
+                botao_senha_nova.style.display = "none";
+                botao_recuperacao.style.display = "none";
+                botao_codigo.style.display = "none";
+                codigo.style.display = "none";
+
+                email_recuperacao.style.display = "none";
+
+                RM_cadastro.style.display = "block";
+                email_cadastro.style.display = "block";
+                senha_cadastro.style.display = "block";
+                nome.style.display = "block";
+                RM_login.style.display = "none";
+                senha_login.style.display = "none";
+                botao_login.style.display = "none";
+                botao_cadastro.style.display = "block";
+                esqueceu_senha.style.display = "none";
+                textinho.innerHTML = "Com ";
+                situacao.innerHTML = "Faça Login";
+                RM_cadastro.value = "";
+                senha_cadastro.value = "";
+                email_cadastro.value = "";
+                nome.value = "";
+                titulo.innerHTML = "Cadastro";
+              }
+            </script>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

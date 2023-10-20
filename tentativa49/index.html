@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bem-Vindo</title>
+    <link rel="stylesheet" id="css-tema" href="css/css.css" />
+    <link href="bootstrap/bootstrap.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="top">&nbsp;</div>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="index.html" class="nav-link active">
+          <img id="img-tema" src="img/logo/claro.png" width="80em"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="livros.html">Livros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="autores.html">Autores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item dropdown escondido">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Minha conta
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    id="email"
+                    href="#"
+                    onclick="modalEmail()"
+                    >Alterar informações</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="sair()"
+                    >Sair da conta</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="apagarConta()"
+                    >Apagar conta</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <input type="checkbox" id="tema" />
+          <i
+            id="icone-tema"
+            class="fa-solid fa-6x fa-sun"
+            style="color: #fff"
+          ></i>
+
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Procurar"
+              aria-label="Search"
+            />
+            <button class="editado" type="submit">Procurar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="banner esquerda"></div>
+    <div class="banner direita"></div>
+    <input type="hidden" id="codigo_cara" />
+    <script>
+      var logado = "";
+      window.addEventListener("load", (event) => {
+        logado = sessionStorage.getItem("logado");
+          if(logado == "sim"){
+            mostraLogin();
+          }
+          else{
+            escondeLogin();
+          }
+      });
+
+      function escondeLogin(){
+        var escondidos = document.getElementsByClassName("escondido");
+for (var i = 0; i < escondidos.length; ++i) 
+{
+  escondidos[i].style.display = 'none';
+
+ }
+
+}
+function mostraLogin(){
+  var escondidos = document.getElementsByClassName("escondido");
+for (var i = 0; i < escondidos.length; ++i) 
+{
+  escondidos[i].style.display = 'block';
+ }
+}
+      
+function sair() {
+        if (confirm("Tem certeza que deseja sair da conta?")) {
+          sessionStorage.clear();
+          location.reload();
+          sessionStorage.setItem("logado", "nao");
+        }
+      }
+      function apagarConta() {
+        var rm = sessionStorage.getItem("rm");
+        var url = "php/usuarios/usuario_excluir.php?codigo=" + rm;
+        if (confirm("Deseja apagar essa conta?" + rm)) {
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+              sessionStorage.clear();
+              sessionStorage.setItem("logado", "nao");
+            });
+        }
+      }
+      function modalEmail() {
+        document.getElementById("email");
+        var myModal = new bootstrap.Modal(
+          document.getElementById("email_modal")
+        );
+        myModal.show();
+        nome = sessionStorage.getItem("nome");
+        email = sessionStorage.getItem("email");
+        rm = sessionStorage.getItem("rm");
+        var email_atualizado = (document.getElementById(
+          "email_atualizado"
+        ).value = email);
+        var nome_atualizado = (document.getElementById(
+          "nome_atualizado"
+        ).value = nome);
+        var codigo_cara = (document.getElementById("codigo_cara").value = rm);
+      }
+      function atualizaEmail() {
+        var email = document.getElementById("email_atualizado").value;
+        var nome = document.getElementById("nome_atualizado").value;
+        var rm = document.getElementById("codigo_cara").value;
+        var emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (
+          email.match(emailFormat) &&
+          nome != null &&
+          nome != "" &&
+          email != null &&
+          email != ""
+        ) {
+          url = `php/usuarios/usuario_editar.php?nome=${nome}&email=${email}&rm=${rm}`;
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              alert(data.mensagem);
+              sessionStorage.setItem("nome", nome);
+              sessionStorage.setItem("email", email);
+            });
+        } else {
+          alert("Preencha todos os campos!");
+        }
+      }
+
+      /*
+a = sessionStorage.getItem('logado');
+if(a == 'sim'){
+  document.write("logado");
+}
+else{
+  document.write("deslogado");
+
+}
+*/
+      var linkTema = document.getElementById("css-tema");
+      var icone = document.getElementById("icone-tema");
+      var img = document.getElementById("img-tema");
+      var temaClaro = "css/css.css";
+      var temaEscuro = "css/escuro.css";
+
+      function mudarParaClaro() {
+        sessionStorage.setItem("tema", "claro");
+        linkTema.href = "css/css.css";
+        icone.className = "fa-solid fa-2x fa-sun";
+        img.src = "img/logo/claro.png";
+      }
+
+      function mudarParaEscuro() {
+        sessionStorage.setItem("tema", "escuro");
+        linkTema.href = "css/escuro.css";
+        icone.className = "fa-solid fa-2x fa-moon";
+        img.src = "img/logo/escuro.png";
+
+      }
+
+      icone.addEventListener("click", function () {
+        if (tema.checked) {
+          tema.checked = false;
+          mudarParaEscuro();
+        } else {
+          tema.checked = true;
+          mudarParaClaro();
+        }
+      });
+
+      // Verifique o tema armazenado na sessionStorage e configure-o inicialmente
+      if (sessionStorage.getItem("tema") === "escuro") {
+        mudarParaEscuro();
+      } else {
+        mudarParaClaro();
+      }
+      const navbarLinks = document.querySelectorAll(".nav-link");
+
+      // Adicione um evento de clique a cada link
+      navbarLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          // Remova a classe 'active' de todos os links
+          navbarLinks.forEach((link) => {
+            link.classList.remove("active");
+          });
+
+          // Adicione a classe 'active' apenas ao link clicado
+          event.target.classList.add("active");
+        });
+      });
+    </script>
+    <div class="container top">
+      <div class="col-main text-center">
+        <h1>Bem-Vindos ao BookVerse!</h1>
+        <h6>
+          Sua biblioteca em formato digital com uma grande variedade de livros!
+        </h6>
+        <div class="row text-center">
+          <h4>O que deseja explorar?</h4>
+
+          <div class="col-sm">
+            <a href="livros.html" class="pagina_inicial">
+              <button class="botao">
+                <i
+                  class="fa-solid fa-4x fa-book-open"
+                  style="color: #3c5f9a"
+                ></i>
+              </button>
+              <br />
+              <h6 class="cs">livros</h6>
+            </a>
+          </div>
+          <div class="col-sm">
+            <a href="autores.html" class="pagina_inicial">
+              <button class="botao">
+                <i class="fa-solid fa-4x fa-user" style="color: #3c5f9a"></i>
+              </button>
+              <br />
+              <h6 class="cs">autores</h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main2 ">
+      <center>
+        <div class="row estilo col-main">
+          <h1 class="linha-baixo1">Veja alguns destaques de livros!</h1>
+
+          <div class="col-sm estilo">
+            <a class="est" href="livro_escolhido.html">
+              <img
+                src="img/livros/xo.jpg"
+                style="height: 70%; width: 50%;"
+                class="livros"
+                alt="Livro1"
+              />
+            </a>
+            <p>O Xango Baker Street</p>
+
+            <h7 class="card-subtittle"
+              >Por <a href="autores.html">Sun Tzu</a></h7
+            >(autor)
+          </div>
+          <div class="col-sm">
+            <a href="livro_escolhido.html" class="est">
+              <img
+                src="img/livros/jojo.jpg"
+                style="height: 70%;width: 50%;"
+                class="livros"
+                alt="Livro1"
+              />
+            </a>
+            <p>Jojo Bizarre Adventures</p>
+
+            <h7 class="card-subtittle"
+              >Por <a href="autores.html">Hiromiko Araki</a></h7
+            >(autor)
+          </div>
+          <div class="col-sm">
+            <a href="livro_escolhido.html" class="est">
+              <img
+                src="img/livros/one.jpg"
+                style="height: 70%;width: 50%;"
+                class="livros"
+                alt="Livro1"
+              />
+            </a>
+            <p>One Piece</p>
+
+            <h7 class="card-subtittle"
+              >Por <a href="autores.html">Eichiro Oda</a></h7
+            >(autor)
+          </div>
+        </div>
+      </center>
+    </div>
+    <center>
+      <div
+        class="row col-main"
+        style="padding-bottom: 80px; padding-top: 100px"
+      >
+        <h1 class="linha-baixo1">Lista de salas</h1>
+
+        <div class="col-md-4">
+          <div class="card salas">
+            <div class="card-header fundamental">Fundamental 1</div>
+            <ul class="list-group list-group-flush">
+              <a href="salas.html">
+                <li class="list-group-item">1° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">2° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">3° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">4° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">5° Ano</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card salas">
+            <div class="card-header fundamental2">Fundamental 2</div>
+            <ul class="list-group list-group-flush">
+              <a href="salas.html">
+                <li class="list-group-item">6° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">7° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">8° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">9° Ano</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card salas">
+            <div class="card-header medio">Ensino Médio</div>
+            <ul class="list-group list-group-flush">
+              <a href="salas.html">
+                <li class="list-group-item">1° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">2° Ano</li>
+              </a>
+              <a href="salas.html">
+                <li class="list-group-item">3° Ano</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </center>
+    <!-- Modal de Email -->
+    <div
+      class="modal fade"
+      id="email_modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Cadastro de Categoria
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body cate">
+            <center>
+              <div class="card-modal">
+                <div class="inputBox">
+                  <span class="user">Endereço de email:</span>
+                  <input
+                    type="text"
+                    id="email_atualizado"
+                    required="required"
+                    placeholder="email@hotmail.com"
+                  />
+                </div>
+                <div class="inputBox">
+                  <span class="user">Nome:</span>
+                  <input
+                    type="text"
+                    id="nome_atualizado"
+                    required="required"
+                    placeholder="Nome Completo"
+                  />
+                </div>
+              </div>
+            </center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="exit" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="enter"
+              data-bs-dismiss="modal"
+              onclick="atualizaEmail()"
+            >
+              Cadastrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- -->
+    <footer class="footer bg-dark text-light">
+      <div class="container text-center">
+        <span>&copy; 2023 BookVerse. Todos os direitos reservados.</span>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script src="bootstrap/bootstrap.js"></script>
+  </body>
+</html>

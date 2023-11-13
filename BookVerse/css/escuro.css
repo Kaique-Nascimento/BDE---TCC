@@ -1,0 +1,930 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+*{
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+:root {
+  --cor1: #5cb8ff;
+  --cor2: #1b69a6;
+  --cor4: #a6680a;
+  --cor3: #f2ab3f;
+  --cor5: #0E2F56;
+}
+body::-webkit-scrollbar {
+  width: 13px;               
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--cor2);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--cor1);
+  border-radius: 20px;      
+  border: 1px solid var(--cor1);  
+}
+
+
+body { 
+  overflow-x: hidden; 
+}
+
+#tema{
+  position: absolute;
+display: none;
+}
+.escondido{
+  display: none;
+}
+#bordinha {
+  position: fixed;
+  left: 0;
+  margin-left: 0.4%;
+  padding: 2%; 
+  z-index: 400; 
+  border: #fff dashed;
+  border-top: transparent; 
+  border-left: transparent; 
+  color: white;
+}
+.nav-link{
+  color: red;
+}
+.nav-link.active {
+  color: #f00;
+}
+#icone-tema{
+  cursor: pointer;
+  margin-right: 1%;
+
+}
+
+/* Estilo para o rótulo (aqui, usamos um label personalizado com ícones FontAwesome) */
+label.tema-label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+}
+
+/* Estilo para o ícone do tema claro */
+label.tema-label .tema-claro::before {
+  content: "\f185"; /* Ícone FontAwesome para o sol */
+  color: #FFD700; /* Cor amarela para o tema claro */
+}
+
+/* Estilo para o ícone do tema escuro */
+label.tema-label .tema-escuro::before {
+  content: "\f186"; /* Ícone FontAwesome para a lua */
+  color: #000; /* Cor preta para o tema escuro */
+}
+html{
+  scroll-behavior: smooth;
+  transition: all 0.5s ease-in-out;
+}
+
+body{
+background-color: #100D33; 
+}
+
+#top {
+  background: url(../img/estante2.jpg) fixed;
+  padding: 3% 0;
+}
+.navbar {
+    background-color: var(--cor5);
+    padding: 15px 0; 
+}
+.navbar-brand img {
+    max-height: 60px;
+}
+.navbar-toggler{
+  background-color: var(--cor1);
+}
+.navbar-toggler-icon{
+  background-color: var(--cor1);
+}
+.navbar-toggler.collapsed{
+  background-color: var(--cor1);
+}
+
+
+.navbar-nav .nav-link {
+    color: #fff; 
+    transition: color 0.3s; 
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f39c12; 
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.form-control {
+    background-color: #ecf0f1;
+    border: none; 
+    border-radius: 20px; 
+}
+.btn.btn-primary{
+  background-color: var(--cor2);
+  transition: all 0.5s ease;
+  color: white;
+}
+.btn.btn-primary:hover{
+  filter: brightness(90%);  
+  background-color: var(--cor2);
+}
+.editado{
+  background-color: var(--cor2);
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  transition: 0.5s all;
+  color:#fff;
+}
+.editado:hover{
+  background-color:var(--cor3);
+  color:#fff;
+  filter: saturate(50%);
+}
+.top {
+  margin-top: 5%;
+}
+.linha-direita {
+  border-style: thin;
+  border-width: 1px;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-color:gray;
+  box-shadow: inset 1px 0 0 0 #dedcdc;
+}
+
+.linha-esquerda {
+  border-style: solid;
+  border-width: 1px;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 0px;
+ 
+}
+
+.linha-baixo {
+  border-style: thin;
+  border-width: 3px;
+  border-top: 0px;
+  border-right: none;
+  border-color:gray;
+  box-shadow: inset 0 0 4px 1px #dedcdc;
+}
+.linha-baixo1 {
+  border-style: thin;
+  border-width: 3px;
+  border-bottom: 0px;
+  border-right: none; 
+  border-color:gray;
+  box-shadow: inset 0 2px 0 0 #dedcdc;
+}
+
+
+.col-main {
+  padding: 5%;
+  padding-bottom: 1px;
+}
+#abajur {
+  width: 40%;
+}
+.cs{
+  color: white;
+}
+#botao {
+  cursor: pointer;
+  width: 2.5%;
+  margin-left: -10%;
+  margin-top: 11%;
+  position: absolute;
+  /*Para telas até 573 por 1244
+   margin-left: -21%;
+    margin-top: 24%;    
+    */
+}
+.revelado {
+  display: none;
+}
+.escolhido:hover {
+  cursor: pointer;
+}
+
+.botao {
+  background-color: #100D33;
+  border-radius: 20px;
+  border-style: none;
+  padding: 10px;
+ 
+}
+.banner {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  border-radius: 999px;
+}
+
+.esquerda {
+   transform: translateX(-50%); 
+  left: 0;
+  /*Talvez uma opção, mas parece que o site tá suspenso sobre o nada
+        background: url(img/estante.jpg) fixed;
+    */
+  background-color: var(--cor2);
+}
+
+.direita {
+   transform: translateX(50%); 
+  right: 0;
+  background-color: var(--cor2);
+}
+
+/*Index Livros e afins*/
+.card-group{
+  width: 80%;
+} 
+.livros {
+  width: 100px; /* Largura desejada */
+  height: 200px; /* Altura desejada */
+  object-fit: cover;
+  margin-top: 40%;
+}
+.estilo:hover :not(:hover) {
+  transition: all 0.5s;
+  opacity: 0.5;
+}
+.livros:hover {
+  transition: all 0.5s;
+  scale: 1.1;
+}
+/*IDEIA:
+No scroll dos livros, poderia ter um homenzinho que fica procurando um livro nas prateleiras
+aí o abckground do scroll seriam os livros e ele em cima procurando*/
+
+/* LIVROS */  
+.gcm{
+  margin-left: 25%;
+}
+.caixa-livro{
+  margin-top: 10%;
+  margin-left: 10%;
+  border-radius: 50%; 
+  text-align: center;
+  width:150px; 
+  height:205px;
+  object-fit: cover;
+  border: 1px  #000;
+  border-radius: 15px;
+  background: rgba( 0, 0, 0, 0.3 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 17px );
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: inset 0 0 1px 1px #808080;
+  border-style: solid;
+ 
+}
+.caixa-livro-autor{
+  margin-top: 20%;
+  margin-left: 35%;
+  border-radius: 50%; 
+  text-align: center;
+  width: 45%; 
+  height: 64%;
+  object-fit: cover;
+  border: 1px  #000;
+  border-radius: 15px;
+  background: rgba( 0, 0, 0, 0.3 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 17px );
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: inset 0 0 1px 1px #808080;
+  border-style: solid;
+}
+.caixa-livro2{
+  margin-left: 10%;
+  width: 50%;
+  height: 100%;
+  border: 1px  #000;
+  border-radius: 15px;
+  background: rgba( 0, 0, 0, 0.3 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 17px );
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: inset 0 0 1px 1px #808080;
+  border-style: solid;
+ 
+ 
+}
+.fas.fa-plus.icone{
+  margin-top: 65%;
+  color: white;
+}
+.fas.fa-plus.icone.seg{
+  margin-top: 70%;
+  color: white;
+  
+}
+.caixa-livro:hover{
+  transition: all 0.5s;
+  filter: brightness(75%);
+}
+.modal-body{
+  background-color: #100D33; 
+}
+.modal-body.cate{
+  margin-bottom: 10%;
+}
+.modal-header{
+  background-color: var(--cor1);
+}
+.modal-content{
+  background-color: #100D33; 
+}
+ .fs-5{
+  color: #000;
+
+}
+/* Estilo para ícones */
+.icone {
+  color: black; 
+  text-decoration: none;
+}
+.icone:hover {
+  color: black; 
+  filter: brightness(80%);
+}
+
+/* */
+
+/*AUTORES */
+
+
+
+.autores {
+
+  border-radius: 50%; 
+  width: 150px; 
+  height: 150px;
+  object-fit: cover;
+
+}
+
+.card a:hover{
+  color: beige;
+  filter: brightness(100%);
+}
+.card-group{
+  object-fit: contain;
+}
+
+.cartao{
+  text-decoration: none;
+  color: beige;
+}
+
+/* */
+
+#categorias{
+  
+  background-color: var(--cor2);
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 20px;
+  color: white;
+}
+.categorias{
+color: var(--cor1);
+}
+
+/*MODAL CADASTROS */
+.card-modal {
+  min-height: 350px;
+  width: 400px;
+  gap: 35px;
+  border-radius: 8px;
+  color: var(--cor5);
+}
+.card-modal.cad{
+padding: 15%;
+}
+div.modal-dialog.cad > div.modal-footer{
+  margin-top: -20%;
+  color: red;
+}
+.modal-footer{
+ 
+  background-color: var(--cor1);
+}
+
+.inputBox {
+  position: relative;
+ 
+}
+
+.inputBox input, .inputBox textarea{
+  background-color: var(--cor2);
+  border-radius: 8px;
+  border: 2px;
+  width: 100%;
+  padding: 2%;
+  outline: none;
+  border: none;
+  color: #000;
+  font-size: 1em;
+  background: white;
+  border: 2px solid #000;
+  transition: 0.1s;
+  border-radius: 8px;
+  margin-top: 5%;
+}
+.botao i:hover{
+  transition: all 0.5s ease;
+  scale:1.2;
+}
+.botao i{
+  transition: all 0.5s ease;
+}
+
+ .inputBox span {
+  
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  padding: 5% 3% 4% 4%;
+  pointer-events: none;
+  font-size: 0.8em;
+  letter-spacing: 0.2em;
+  border: 2px;
+  margin-top: 2%;
+  border: 5px;
+  border-color: #ecf0f1;
+  
+}
+select{
+  color: black;
+}
+select option{
+  background-color: white;
+  color: black;
+}
+textarea::placeholder{
+  color: whitesmoke
+}
+.inputBox span + input:focus,
+.inputBox span + input:valid,
+.inputBox span + textarea:focus,
+.inputBox span + textarea.has-text:valid
+{
+  font-size: 0.8em;
+  background-color: var(--cor2);
+  letter-spacing: 0.2em;
+  color: white;
+  border: 2px;
+  margin-top: 2%;
+}
+
+.inputBox input:valid,
+.inputBox input:focus{
+  margin-top: 2%;
+}
+label:hover{
+  cursor: pointer;
+}
+.enter {
+  height:50px;
+  width: 30%;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+  background-color:#006100;
+  color: white;
+ 
+}
+.exit {
+  height: 45px;
+  width: 30%;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+  background-color:red;
+  color: white;
+}
+.custom-file-upload {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--cor2);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #555;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+.file-message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #4CAF50;
+  display: none;
+}
+/* */
+/*Tema escuro
+.modal-body, .modal-header, .modal-footer{
+  background-color: #000;
+  color: white;
+}
+*/
+
+
+.card-body{
+  background-color: var(--cor2);
+  color: beige;
+}
+.card-title{
+  color: beige;
+}
+
+
+/* SALAS */
+.card-header.salinhas{
+  background-color: var(--cor1);
+  color: white; 
+}
+.list-group  > a{
+  text-decoration: none;
+}
+.card.salas{
+  background-color: #100D33;
+}
+
+/*DOWNLOAD DE LIVROS */
+.download{
+  border-radius: 20px;
+  width: 180px;
+  margin-left: -4%;
+
+}
+.fa-solid.fa-download {
+  color: #000;
+}
+.btniconedt{
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+  color: white;
+  background-color: var(--cor);
+  width: 50px;
+  margin-left:95%;
+}
+.fas.fa-edit.icone.edt {
+  color: white; /* Substitua #ff0000 pela cor desejada em formato hexadecimal, nome da cor ou RGB */
+}
+#icon{
+padding-left: 300px;
+}
+.btnicon{
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+  background-color: #100D33;
+  width: 50px;
+  margin-left:10%;
+}
+.info{
+font-size: 13px;
+}
+#colicon{
+  padding: 7%;
+  text-align: center;
+  margin-right: 15%;
+
+}
+#subtitulo{
+  font-size: 11px;
+  color: #3FACF5;
+}
+.titulo{
+  color: var(--cor1);
+  width: 100%;
+}
+.titulo_bio{
+  color: var(--cor1);
+}
+.caixa-autores{ 
+  border: 1px  #000;
+ color: #808080;
+  padding-bottom: 100px;
+    border-radius: 50%; 
+    text-align: center;
+    width: 150px; 
+    height: 150px;
+    object-fit: cover;
+  background-color: var( --cor2);
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 17px );
+  cursor: pointer;
+  transition: all 0.5s;
+
+  
+}
+.ano{
+  color: #808080;
+}
+.card-tittle.tt{
+  font-size: 13px;
+  color: #3FACF5;
+}
+.card-subtittle{
+  font-size: 13px;
+
+}
+.card-subtitle{
+  color: white;
+  font-size: 13px;
+}
+
+
+.card-fotos{
+
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: inset 0 0 4px 1px #dedcdc;
+   
+}
+.card-equal-height {
+  height: 300px; 
+}
+.card.autores{
+ 
+  height: 86%; 
+  padding-bottom: 66px;
+  padding-top: 60px;
+  border-radius: 8px;
+    width: 200px;
+    background: rgba( 0, 0, 0, 0.3 );
+}
+.card.salas{
+ 
+  padding-bottom: 0;
+  padding-top: 0;
+  border-radius: 8px;
+    width: 210px;
+    box-shadow: inset 0 0 4px 1px #dedcdc;
+}
+.card-subtittle.livros{
+  font-size: 13px;
+  padding-top: 40px;
+  padding-left: 65px;
+}
+.pagina_inicial{
+  text-decoration: none;
+  color: red;
+}
+
+
+#lista_categoria{
+  font-size: 14px;
+  color: #333;
+}
+#lista_periodo{
+  font-size: 14px;
+  color: #333;
+}
+
+input[type="checkbox"]:checked + label {
+  color: var(--cor2);
+}
+
+/* Estilizando a checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--cor2);
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+  position: relative;
+  padding: 5%;
+  margin-top: 2%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="checkbox"]:checked {
+  background-color: white;
+  border-color: var(--cor2);
+}
+#link-card-livro{
+  color: black;
+  text-decoration: none;
+}
+#link-card-livro:hover{
+  color: black;
+}
+
+
+/* Adicionando o checkmark */
+input[type="checkbox"]::before {
+  content: '\2713'; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  font-size: 120%;
+  font-weight: 150%;
+  color: var(--cor2);
+  visibility: hidden; 
+}
+
+input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+
+/* formulario de login */
+.form2{
+  padding: 1rem;
+}
+.tema{
+  background: none;
+  border: none;
+  color: inherit;
+} 
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #000;
+}
+.input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+}
+.input-container input{
+  margin: 1%;
+}
+.input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 85%;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.input-container span {
+  display: grid;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  place-content: center;
+}
+
+.input-container span svg {
+  color: #9CA3AF;
+  width: 1rem;
+  height: 1rem;
+}
+
+.submit {
+ padding: 0.75rem;
+ margin-bottom: -10%;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.signup-link {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+.form-title2{
+  font-size: 1.50rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: #4F5054;
+}
+.biografia{
+  font-size: 13px;
+}
+.bio{
+line-height: 200%;
+}
+#RM_cadastro, #senha_cadastro, #nome_cadastro, 
+#login_login, #botao_cadastro, #email_cadastro, 
+#nome, #email_recuperacao, #botao_recuperacao, 
+#codigo_recuperacao, #botao_codigo, #senha_recuperacao{
+  display: none;
+}
+#botao_login, #botao_cadastro, #botao_recuperacao, 
+#botao_codigo{
+  width: 50%;
+  background-color: #6288DE; 
+}
+.signup-link{
+  margin-top: 10%;
+}
+.form{
+  padding-top: 25%;
+}
+.tema{
+  background: none;
+  border: none;
+  color: inherit;
+}
+#card-login{
+  color: #000;
+  background-color:#F4F7FE;  
+       -webkit-border-top-right-radius: 10px;
+      -webkit-border-bottom-right-radius: 10px;
+      -moz-border-radius-topright: 10px;
+      -moz-border-radius-bottomright: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+#campos_nascimento_falecimento{
+  display: flex; 
+  flex-direction: row; 
+  align-items: center;
+}
+#nome_editado, #sinopse_editada, #data_editada, 
+#editora_editada, #select_autor_editado, #select_periodo_editado,
+#select_categoria_editada, #classificacao_indicativa_editada,
+#select_sala_editada, #botao_editar, #botao_cancelar,
+#nome_autor_editado, #nacionalidade_editada, #campos_nascimento_falecimento,
+#biografia_editada, #select_categoria_editada, #select_periodo_editado,
+#icon-foto, #select_classificacao_editada, #icon-pdf, 
+#botao_periodo_editado, #botao_categoria_editada, #botao_autor_editado
+{
+  color: black;
+  display: none;
+}
+#nome_editado{
+  color: #000;
+  margin-top: 20%;
+}
+#data_nascimento_editada,#data_falecimento_editada{
+  color: #000;
+}
+#icon-foto{
+  color: var(--cor1);
+}
+#nome_autor_editado{
+  margin-top: -200%;
+}
+
+
+

@@ -24,9 +24,8 @@ Hhá instituições educacionais no Brasil que enfrentam a carência de bibliote
 
 ## Como funciona?
 * Baixe e descompacte a pasta 'BookVerse';
-* Abra o programa interpretador de banco de dados MySql de sua escolha (no meu caso, HeidSQL);
 * Abra o SQL 'banco_book';
-* Entre no sistema (talvez, seja necessário alteara host e senha do arquivo 'conexao.php');
+* Entre no sistema (talvez, seja necessário altear host e senha do arquivo 'conexao.php');
 * Cadastre os autores, livros (somente formato PDF);
 * Seja feliz!
 

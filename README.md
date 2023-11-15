@@ -43,6 +43,6 @@ Atibaia SP - 2023
 
 
 ###
-Caso encontre erros, ou mande mensagem em meu zap ou entre em contato comigo pelo meu <a href=https://www.linkedin.com/in/kaique-nascimento-41171723a target="_blank">  Linkedin </a>!
+Caso encontre erros, ou mande mensagem em meu zap ou entre em contato comigo pelo meu <a href=https://www.linkedin.com/in/kaique-nascimento-41171723a>  Linkedin </a>!
 
 

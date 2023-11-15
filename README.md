@@ -21,7 +21,6 @@
 Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitalizassem para se adequarem aos dias atuais e para o futuro próximo.
 Além de que, há instituições educacionais no Brasil que enfrentam a carência de bibliotecas físicas apropriadas para acomodar os estudantes e facilitar suas tarefas escolares. Frequentemente, essas bibliotecas sofrem com a falta de recursos e disponibilizam livros obsoletos, antiquados ou, em algumas situações, simplesmente não as possuem.
 
-![image](https://github.com/Kaique-Nascimento/BookVerse-TCC/assets/105950147/13718bfa-4b22-4fda-834b-ad86ffd579c7)
 
 
 

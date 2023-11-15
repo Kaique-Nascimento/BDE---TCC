@@ -6,6 +6,5 @@
 ## Tecnologias utilizadas:
 ![Static Badge](https://img.shields.io/badge/HTML-black?style=for-the-badge&logo=html5&logoColor=%23E34F26)
 ![Static Badge](https://img.shields.io/badge/Javascript-black?style=for-the-badge&logo=javascript&logoColor=yellow)
-![Made in Brazil](https://img.shields.io/badge/Made%20in-Brazil-04360d)
 
 

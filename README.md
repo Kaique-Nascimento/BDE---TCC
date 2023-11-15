@@ -1,5 +1,8 @@
 # <p align="center">BookVerse - Biblioteca Digital para Estudantes </p>
+<p align="center">
+  
 <img align="center" src="BookVerse/img/logo/claro.png">
+</p>
 <br>
 
 ![Static Badge](https://img.shields.io/badge/100%25-%23008D2F?style=plastic&label=Status)

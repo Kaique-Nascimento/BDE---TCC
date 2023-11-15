@@ -4,7 +4,9 @@
 ![License](https://img.shields.io/badge/License-Etec%20Atibaia-8c0a0a)
 <br>
 ## Tecnologias utilizadas:
-![Static Badge](https://img.shields.io/badge/HTML-black?style=for-the-badge&logo=html5&logoColor=%23E34F26)
-![Static Badge](https://img.shields.io/badge/Javascript-black?style=for-the-badge&logo=javascript&logoColor=yellow)
+![Static Badge](https://img.shields.io/badge/HTML-%23E34F26?style=for-the-badge&logo=html5&logoColor=black)
+![Static Badge](https://img.shields.io/badge/Javascript-%23F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Static Badge](https://img.shields.io/badge/PHP-%23777BB4?style=for-the-badge&logo=php&logoColor=black)
+
 
 

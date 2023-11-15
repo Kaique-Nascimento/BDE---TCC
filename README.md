@@ -24,7 +24,7 @@ Há instituições educacionais no Brasil que enfrentam a carência de bibliotec
 
 ## Como funciona?
 * Baixe e descompacte a pasta 'BookVerse';
-* Abra o SQL 'banco_bookverse';
+* Execute o SQL 'banco_bookverse';
 * Entre no sistema (talvez, seja necessário altear host e senha do arquivo 'conexao.php');
 * Cadastre os autores, livros (somente formato PDF);
 * Seja feliz!

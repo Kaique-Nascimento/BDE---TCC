@@ -1,5 +1,5 @@
 # <p align="center">BookVerse - Biblioteca Digital para Estudantes</p>
-
+![](BookVerse/img/logo/claro.png)
 ![Static Badge](https://img.shields.io/badge/100%25-%23008D2F?style=plastic&label=Status)
 ![License](https://img.shields.io/badge/License-Etec%20Atibaia-0B843B?style=plastic)
 <br>
@@ -13,6 +13,8 @@
 ## Introdução
 
 Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitalizassem para se adequarem aos dias atuais e para o futuro próximo.
+
+
 
 
 

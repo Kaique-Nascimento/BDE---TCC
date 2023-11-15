@@ -16,10 +16,17 @@
 ![Static Badge](https://img.shields.io/badge/CSS-%231572B6?style=for-the-badge&logo=css3&logoColor=black)
 ![Static Badge](https://img.shields.io/badge/MySql-%234479A1?style=for-the-badge&logo=Mysql&logoColor=black)
 
-## Por que fizemos isso?
-
+## Introdução
 Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitalizassem para se adequarem aos dias atuais e para o futuro próximo.
-Além de que, há instituições educacionais no Brasil que enfrentam a carência de bibliotecas físicas apropriadas para acomodar os estudantes e facilitar suas tarefas escolares. Frequentemente, essas bibliotecas sofrem com a falta de recursos e disponibilizam livros obsoletos, antiquados ou, em algumas situações, simplesmente não as possuem.
+
+## Por que fizemos isso?
+Hhá instituições educacionais no Brasil que enfrentam a carência de bibliotecas físicas apropriadas para acomodar os estudantes e facilitar suas tarefas escolares. Frequentemente, essas bibliotecas sofrem com a falta de recursos e disponibilizam livros obsoletos, antiquados ou, em algumas situações, simplesmente não as possuem. Então, foi projetado um sistema web com banco de dados local que funciona como uma biblioteca física, mas digital.
+
+## Como funciona?
+* Baixe e descompacte a pasta 'BookVerse';
+* 
+
+
 
 
 

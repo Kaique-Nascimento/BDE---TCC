@@ -20,11 +20,11 @@
 Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitalizassem para se adequarem aos dias atuais e para o futuro próximo.
 
 ## Por que fizemos isso?
-Hhá instituições educacionais no Brasil que enfrentam a carência de bibliotecas físicas apropriadas para acomodar os estudantes e facilitar suas tarefas escolares. Frequentemente, essas bibliotecas sofrem com a falta de recursos e disponibilizam livros obsoletos, antiquados ou, em algumas situações, simplesmente não as possuem. Então, foi projetado um sistema web com banco de dados local que funciona como uma biblioteca física, mas digital.
+Hhá instituições educacionais no Brasil que enfrentam a carência de bibliotecas físicas apropriadas para acomodar os estudantes e facilitar suas tarefas escolares. Frequentemente, essas bibliotecas sofrem com a falta de recursos e disponibilizam livros obsoletos, antiquados ou, em algumas situações, simplesmente não as possuem. Então, foi projetado um sistema web com banco de dados local que funciona como uma biblioteca física, mas digital, onde apenas os funcionários da escola (bibliotecários, etc) podem cadastrar os livros em formato PDF e deixar disponíveis para os alunos lerem em outros computadores ou quando entrarem na rede da escola.
 
 ## Como funciona?
 * Baixe e descompacte a pasta 'BookVerse';
-* Abra o SQL 'banco_book';
+* Abra o SQL 'banco_bookverse';
 * Entre no sistema (talvez, seja necessário altear host e senha do arquivo 'conexao.php');
 * Cadastre os autores, livros (somente formato PDF);
 * Seja feliz!

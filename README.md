@@ -12,7 +12,7 @@
 
 ## Introdução
 
-[] Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitalizassem para se adequarem aos dias atuais e para o futuro próximo.
+Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitalizassem para se adequarem aos dias atuais e para o futuro próximo.
 
 
 

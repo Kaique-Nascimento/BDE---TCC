@@ -1,7 +1,7 @@
 # <p align="center">BookVerse - Biblioteca Digital para Estudantes</p>
-<p align="center">
+<p align="center"> </p>
 ![](BookVerse/img/logo/claro.png)
-</p><br>
+<br>
 ![Static Badge](https://img.shields.io/badge/100%25-%23008D2F?style=plastic&label=Status)
 ![License](https://img.shields.io/badge/License-Etec%20Atibaia-0B843B?style=plastic)
 <br>

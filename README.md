@@ -27,11 +27,11 @@ Clone o repositórios utilizando:
  ```bash
 git clone https://github.com/Kaique-Nascimento/BookVerse-TCC.git
 ```
-* Execute o SQL 'banco_bookverse' para criar o banco de dados local para armazenar os registros;
-* Altere as credenciais para entrar no banco de dados local no arquivo 'conexao.php';
+* Execute o SQL **banco_bookverse** para criar o banco de dados local para armazenar os registros;
+* Altere as credenciais para entrar no banco de dados local no arquivo **conexao.php**;
 * Acesse o seu localhost pela URL do navegador;
-* Entre no sistema pelo arquivo 'index.html';
-* Cadastre os autores, livros (somente formato PDF);
+* Entre no sistema pelo arquivo **index.html**;
+* Cadastre os autores e livros (somente formato PDF);
 * Seja feliz!
 
 

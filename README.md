@@ -23,10 +23,10 @@ Com o advento da tecnologia, fez-se necessário que as bibliotecas se digitaliza
 Há instituições educacionais no Brasil que enfrentam a carência de bibliotecas físicas apropriadas para acomodar os estudantes e facilitar suas tarefas escolares. Frequentemente, essas bibliotecas sofrem com a falta de recursos e disponibilizam livros obsoletos, antiquados ou, em algumas situações, simplesmente não as possuem. Então, foi projetado um sistema web com banco de dados local que funciona como uma biblioteca física, mas digital, onde apenas os funcionários da escola (bibliotecários, etc) podem cadastrar os livros em formato PDF e deixar disponíveis para os alunos lerem em outros computadores ou quando entrarem na rede da escola.
 
 ## Como funciona?
-* Clone o repositórios utilizando:
+Clone o repositórios utilizando:
  ```bash
 git clone https://github.com/Kaique-Nascimento/BookVerse-TCC.git
-```;
+```
 * Execute o SQL 'banco_bookverse' para criar o banco de dados local para armazenar os registros;
 * Altere as credenciais para entrar no banco de dados local no arquivo 'conexao.php';
 * Acesse o seu localhost pela URL do navegador;
